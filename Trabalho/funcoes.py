@@ -18,7 +18,7 @@ import json
 #}
 #
 # Agora isto é parecido com dicionários em python por isso consegues usar isto à vontade, simples fazes o que tá na função
-# load_results() onde simplesmente usando a biblioteca devolve a variavel dados que podes usar como um dicionário.
+# carrgar_dados() onde simplesmente usando a biblioteca devolve a variavel dados que podes usar como um dicionário.
 # Um dicionário tem as chaves e o valor dentro da chave:
 # {"chave": valor} 
 #
@@ -32,35 +32,35 @@ Tenta dar rename nas funções pra tar tudo me portugues
 '''
 
 # Carregar ficheiro json
-def load_results():
-    with open('results.json', 'r') as file:
+def carrgar_dados():
+    with open('dados.json', 'r') as file:
         dados = json.load(file)
         return dados
 
 # Guardar ficheiro json
-def save_results(results):
-    with open('results.json', 'w') as file:
-        json.dump(results, file)
+def guardar_dados(dados):
+    with open('dados.json', 'w') as file:
+        json.dump(dados, file)
 
 # Apagar dado do ficheiro json
 # Reescreve o ficheiro com tudo menos o dado que tem o id que se quer apagar 
-def delete_result(id):
-    results = load_results()
-    results = [result for result in results if result['id'] != id]
-    save_results(results)
+def apagar_dados(id):
+    dados = carrgar_dados()
+    dados = [dados for dados in dados if dados['id'] != id]
+    guardar_dados(dados)
 
 # Adiciona ao ficheiro json
 # Dá "append" (adicionar) o dado que deste
-def inserirDado(dado):
-    results = load_results()
-    results.append(dado)
-    save_results(results)
+def inserir_Dado(dado):
+    dados = carrgar_dados()
+    dados.append(dado)
+    guardar_dados(dados)
 
 # Agora tens mais um argumento, onde 
 def inserirDado(seccao, dado):
-    results = load_results()
-    results[seccao].append(dado)
-    save_results(results)
+    dados = carrgar_dados()
+    dados[seccao].append(dado)
+    guardar_dados(dados)
 
 
 try:
@@ -71,39 +71,39 @@ except:
 
 # Altera um valor
 # Procura pelo id e quando encontra altera usando .update() um método onde altera o valor de uma chave
-def update_result(id, updated_result):
-    results = load_results()
-    for result in results:
-        if result['id'] == id:
-            result.update(updated_result)
+def alterar_dados(id, alterar_dados):
+    dados = carrgar_dados()
+    for dados in dados:
+        if dados['id'] == id:
+            dados.update(alterar_dados)
             break
-    save_results(results)
+    guardar_dados(dados)
 
 # Filtra os dados
 # Procura pelos dados procurando por um valor dado
-def filter_results(filters):
-    results = load_results()
+def filtrar_dados(filters):
+    dados = carrgar_dados()
     for key, value in filters.items():
-        results = [result for result in results if result[key] == value]
-    return results
+        dados = [dados for dados in dados if dados[key] == value]
+    return dados
 
 # Print a tudo
 # Simplesmente vai de linha em linha e da print
-def print_results():
-    results = load_results()
-    for result in results:
-        print(result)
+def print_dados():
+    dados = carrgar_dados()
+    for dados in dados:
+        print(dados)
 
 # Exemplo de uso
 # Apagar dado com id de 2
-delete_result(2)
+apagar_dados(2)
 # Inserir dado
-insert_result({"id": 5, "type": "Painel de Controle", "client": "Banco Inter", "result": "Falha na aplicação", "date": "2021-06-25"})
+inserir_Dado({"id": 5, "type": "Painel de Controle", "client": "Banco Inter", "dados": "Falha na aplicação", "date": "2021-06-25"})
 # Alterar o "type" do dado com id de 1
-update_result(1, {"type": "Revisão de Segurança"})
-# Vai dar print a todos os resultados com "Banco Inter" de "client"
-print(filter_results({"client": "Banco Inter"}))
-print_results()
+alterar_dados(1, {"type": "Revisão de Segurança"})
+# Vai dar print a todos os dados com "Banco Inter" de "client"
+print(filtrar_dados({"client": "Banco Inter"}))
+print_dados()
 
 
 
