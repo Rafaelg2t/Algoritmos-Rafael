@@ -30,7 +30,9 @@ import json
 '''
 Tenta dar rename nas funções pra tar tudo me portugues
 '''
-
+'''
+Fiz alguma cena!
+'''
 # Carregar ficheiro json
 def carrgar_dados():
     with open('dados.json', 'r') as file:
