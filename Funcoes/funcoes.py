@@ -4,7 +4,7 @@ import json
 # Para teres noção do que são ficheiros json
 # Em resumo, JSON é um formato de dados leve e legível por humanos, comumente usado para trocar informações entre sistemas. 
 # Ele utiliza uma estrutura simples de pares chave-valor e suporta tipos de dados como strings, números, booleanos, arrays e objetos. 
-# Sua simpliccodigoade e independência de linguagem o tornam amplamente utilizado na comunicação entre servcodigoores e clientes na web.
+# Sua simplecidade e independência de linguagem o tornam amplamente utilizado na comunicação entre servcodigoores e clientes na web.
 #
 # Outra noção que tens de ter é objetos de json, que são pareccodigoos com dicionários de python (mais abaixo)
 # Exemplo de um objeto de objeto de um ficheiro json, que começa e acaba com os "{}"":
@@ -43,7 +43,7 @@ def guardar_dados(dados):
 
 # Apagar dado do ficheiro json
 # Reescreve o ficheiro com tudo menos o dado que tem o codigo que se quer apagar 
-def apagar_dados(codigo):
+def apagar_dados(seccao, codigo):
     dados = carregar_dados()
     dados = [dados for dados in dados if dados['codigo'] != codigo]
     guardar_dados(dados)
@@ -51,13 +51,6 @@ def apagar_dados(codigo):
 
 # Adiciona ao ficheiro json
 # Dá "append" (adicionar) o dado que deste
-def inserir_dado(dado):
-    dados = carregar_dados()
-    dados.append(dado)
-    guardar_dados(dados)
-
-
-# Agora tens mais um argumento, onde 
 def inserir_dado(seccao, dado):
     dados = carregar_dados()
     dados[seccao].append(dado)
@@ -66,7 +59,7 @@ def inserir_dado(seccao, dado):
 
 # Altera um valor
 # Procura pelo codigo e quando encontra altera usando .update() um método onde altera o valor de uma chave
-def alterar_dados(codigo, alterar_dados):
+def alterar_dados(seccao, codigo, alterar_dados):
     dados = carregar_dados()
     for dados in dados:
         if dados['codigo'] == codigo:
@@ -76,7 +69,7 @@ def alterar_dados(codigo, alterar_dados):
 
 # Filtra os dados
 # Procura pelos dados procurando por um valor dado
-def filtrar_dados(filters):
+def filtrar_dados(seccao, filters):
     dados = carregar_dados()
     for key, value in filters.items():
         dados = [dados for dados in dados if dados[key] == value]
@@ -85,22 +78,11 @@ def filtrar_dados(filters):
 
 # Print a tudo
 # Simplesmente vai de linha em linha e da print
-def print_dados():
+def print_dados(seccao):
     dados = carregar_dados()
-    for dados in dados:
+    for dados in dados[seccao]:
         print(dados)
 
-
-# Exemplo de uso
-# Apagar dado com codigo de 2
-apagar_dados(2)
-# Inserir dado
-inserir_dado({"codigo": 5, "type": "Painel de Controle", "client": "Banco Inter", "dados": "Falha na aplicação", "date": "2021-06-25"})
-# Alterar o "type" do dado com codigo de 1
-alterar_dados(1, {"type": "Revisão de Segurança"})
-# Vai dar print a todos os dados com "Banco Inter" de "client"
-print(filtrar_dados({"client": "Banco Inter"}))
-print_dados()
 
 
 

@@ -1,0 +1,62 @@
+{
+    "TipoClientes": [
+        {
+            "Codigo": 0,
+            "Nome": ""
+        },
+        {
+            "Codigo": 1,
+            "Nome": "Hospital"
+        }
+    ],
+    "TipoAnalises": [
+        {
+            "Codigo": 0,
+            "Nome": "",
+            "Preco": 0
+        }
+    ],
+    "Analises": [
+        {
+            "Codigo": 0,
+            "Tipo_de_analise": "",
+            "Preco": 0
+        }
+    ],
+    "Clientes": [
+        {
+            "Codigo": 0,
+            "Nome": "",
+            "Departamento": ""
+        }
+    ],
+    "Funcionarios": [
+        {
+            "Codigo": 0,
+            "Nome": "",
+            "Departamento": ""
+        }
+    ],
+    "Utilizadores": [
+        {
+            "Codigo": 0,
+            "Nome": ""
+        }
+    ],
+    "PedidosAnalises": [
+        {
+            "Codigo": 0,
+            "Cliente": "",
+            "Tipo_de_cliente": "",
+            "Data": ""
+        }
+    ],
+    "ResultadosAnalises": [
+        {
+            "Codigo": 0,
+            "Cliente": "",
+            "Resultados": {},
+            "Data": ""
+        }
+    ]
+}
