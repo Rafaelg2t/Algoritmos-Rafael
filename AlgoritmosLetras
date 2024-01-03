@@ -1,0 +1,35 @@
+ SE escolha==1:
+
+    Então 
+
+    Se
+    dadoAInserir[Código] != a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,x,z,
+
+        Verificar
+        Se 
+        dadoAInserir[Código] != A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,Y,X,Z 
+
+        Então 
+
+        Valor aceite continuar o código
+
+        Se Não
+    Se Não
+
+    VALOR INCORRETO
+
+
+def validar_codigo(codigo):
+    caracteres_validos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    return all(caractere in caracteres_validos for caractere in codigo)
+
+def inserir_codigo(dadoAInserir):
+    if validar_codigo(dadoAInserir['Código']):
+        return 'Valor aceite continuar o código'
+    else:
+        return 'VALOR INCORRETO'
+
+# Exemplo de uso
+dadoAInserir = {'Código': 'ABC123'}
+resultado = inserir_codigo(dadoAInserir)
+print(resultado) # Saída: Valor aceite continuar o código
